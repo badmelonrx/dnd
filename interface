@@ -1,0 +1,12 @@
+get_spell_list(character)
+  -get list of spells and levels
+get_spell_slots(character)
+  -get level, current number, and max number for each spell slot
+use_spell_slot(character, level)
+  -patch current number for slot
+refill_spell_slot(character, level)
+  -patch current number for slot
+get_spell_info(spell, level)
+  -get description for spell at level
+
+ 
