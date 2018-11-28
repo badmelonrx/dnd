@@ -1,37 +1,24 @@
 <template>
-	<div  id="char-view">
-	
-	<button  @click="getCharInfo($route.params.id)">Get Info for {{$route.params.id}} </button>
-	<p>{{charInfo}}</p>
-
-
+	<div>Character {{$route.params.id}}
+		<p>
+			{{getCharacter}}
+		</p>
 	</div>
-
 </template>
 <script>
-	import axios from 'axios'
+	import store from '../store';
 	export default{
-		name:'CharacterView',
-		data: function(){
-			return {
-				charId:"",
-				charInfo: {},
-				loaded:false,
+		name:'character-view',
+		computed:{
+			getCharacter(){
+				return store.state.charInfo;
 			}
 		},
-		props:['character'],
-		methods:{
-			getCharInfo(id){
-				this.loading = true;
-				axios.get('http://crit-fail.herokuapp.com/characters/'+id).then((response)=> {
-	        	this.loading = false;
-	        	this.charInfo = response.data;
-	        	this.loaded = true;
-	      }, (error) => {
-	        this.loading = false;
-	        console.log(error);
-	      })
+		created:
+			function(){
+				store.commit('getNewChar', this.$route.params.id);
 			}
-		}
+		
 	}
+
 </script>
