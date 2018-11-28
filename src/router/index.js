@@ -1,21 +1,26 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Axios from 'axios'
-import CharacterList from '@/components/CharacterList'
 import HelloWorld from '@/components/HelloWorld'
-import CharacterView from '@/components/CharacterView.vue'
-
+import CharacterView from '@/components/CharacterView'
 Vue.use(Router)
+
 
 export default new Router({
   routes: [
     {
-	   	path: '/', 
-	    component: CharacterList
-	},
+      path: '/',
+      name: 'HelloWorld',
+      component: HelloWorld
+    },
     {
-    	path: '/character/:id', 
-    	component: CharacterView,
-    	name: 'character'}
-    ]
+      path: '/characters',
+      component: CharacterView,
+      children: [
+      {
+      	path: ':id',
+      	component: CharacterView
+  		}
+      ]
+    },
+  ]
 })

@@ -1,44 +1,51 @@
 <template>
   <div id="app">
-        <div class="app-header"><h1 class='nav-title'>Crit-Fail</h1><h3 class='nav-message'>Where you can keep your trash!</h3></div>
+    <div class="wrapper">
+      <nav class="navbar navbar-default">
         <div class="container">
-          <router-view/>
+          <a class="navbar-brand">
+            Crit-Fail
+          </a>
         </div>
+      </nav>
+    </div>
+
+    <div class="row main">
+      <div class="col-sm-3">
+      <sidebar/>
+      </div>
+      <div class="col-sm-9">
+      <router-view/>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+  import Sidebar from './components/Sidebar'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {'sidebar':Sidebar}
 }
 </script>
 
 <style>
 #app {
-  font-family: 'Dosis', Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-align: center;
   color: #2c3e50;
+ 
 }
-.container{
-  padding:10px;
-  max-width: initial;
-}
-.app-header{
+.main{
+  height:100%;
   width:100%;
-  background-color: black;
-  color: white;
-  padding: 0px 5px; 
-  overflow-wrap: all;
 }
-
-.nav-title{
-  font-size: 4em;
-  display: inline-block;
-  padding: 0px 10px;  
+nav{
+  margin-bottom: 0px !important;
 }
-.nav-message{
-  display: inline-block;  
-  padding: 0px 5px; 
+.navbar{
+  width: 100%;
 }
 </style>
